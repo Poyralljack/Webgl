@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute vec4 vPosition;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+attribute vec2 a_texcoord;
+varying vec2 v_texcoord;
+
+void
+main()
+{
+    gl_Position = projectionMatrix*modelViewMatrix*vPosition;
+    v_texcoord = a_texcoord;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+varying vec2 v_texcoord;
+uniform sampler2D texMap;
+void
+main()
+{
+  gl_FragColor = texture2D(texMap, v_texcoord);
+}
+</script>
+<div style="position: absolute;top: 30px; left: 580px; width: 550px; height: 30px;"> Welcome to my 3D Program. </div>
+<div style="position: absolute;top: 50px; left: 580px; width: 550px; height: 30px;"> Here I used Webgl to draw my object. </div>
+<div style="position: absolute;top: 70px; left: 580px; width: 550px; height: 30px;"> To change either wireframe or texture-colored version ,press Version button. </div>
+<div style="position: absolute;top: 90px; left: 580px; width: 550px; height: 30px;"> To change either orthogonal or perspective view ,press Projection button. </div>
+<div style="position: absolute;top: 110px; left: 580px; width: 550px; height: 30px;"> To rotate the object press with x,y and z keys. </div>
+<div style="position: absolute;top: 130px; left: 580px; width: 550px; height: 30px;"> To translate the object press with arrow keys. </div>
+<label style="position: absolute; left: 580px; top: 180px;font-size:20px" id="Label1">Version</label>
+  <button style="position: absolute; left: 580px; top: 210px;" id="version" type="button">ON / OFF</button>
+  <label style="position: absolute; left: 580px; top: 240px;font-size:20px" id="Label2">Projection</label>
+  <button style="position: absolute; left: 580px; top: 270px;" id="projection" type="button">ON / OFF</button>
+
+   <script type="text/javascript" src="common/webgl-utils.js"></script>
+   <script type="text/javascript" src="common/initShaders.js"></script>
+   <script type="text/javascript" src="common/MV.js"></script>
+   <script type="text/javascript" src="common/18290101.js"></script>
+   <body>
+    <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+  
+  </canvas>
+  </body>
+
+</html>
