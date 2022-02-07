@@ -1,0 +1,48 @@
+<html>
+<body>
+      <canvas id="gl-canvas" width="512" height="512">
+      <!-- The following message is displayed if the browser doesn’t
+         -- support HTML5 -->
+      Sorry; your web browser does not support HTML5’s canvas element.
+      </canvas>
+      <div>
+         <label style="position: absolute;top: 170px; left: 520px; width: 100px; height: 20px;" for="slide1">red-----> 0</label>
+         <label style="position: absolute;top: 170px; left: 760px; width: 100px; height: 20px;" for="slide1">100</label>
+          <input style="position: absolute;top: 160px; left: 600px; width: 150px; height: 30px;" id="slide1" type="range"
+         min="0" max="100" step="1" value="50" /></div>
+         <div>
+            <label style="position: absolute;top: 210px; left: 520px; width: 100px; height: 20px;" for="slide2">green---> 0</label>
+            <label style="position: absolute;top: 210px; left: 760px; width: 100px; height: 20px;" for="slide2">100</label>
+       <input style="position: absolute;top: 200px; left: 600px; width: 150px; height: 30px;" id="slide2" type="range"
+         min="0" max="100" step="1" value="50" /> </div>
+         <div>
+            <label style="position: absolute;top: 250px; left: 520px; width: 100px; height: 20px;" for="slide3">blue-----> 0</label>
+            <label style="position: absolute;top: 250px; left: 760px; width: 100px; height: 20px;" for="slide1">100</label>
+         <input style="position: absolute;top: 240px; left: 600px; width: 150px; height: 30px;"id="slide3" type="range"
+         min="0" max="100" step="1" value="50" /></div>
+         
+</body>
+   <script id="vertex-shader" type="x-shader/x-vertex">
+      attribute vec4 vPosition;
+      uniform mat4 model;
+      uniform float theta;
+      void main() {  
+         gl_Position=model*vPosition;
+         gl_Position.w=1.0;
+      }
+   </script>
+   <script id="fragment-shader" type="x-shader/x-fragment">
+      precision mediump float;
+      uniform vec4 u_color;
+      void main() {
+         gl_FragColor = u_color;
+      }
+   </script>
+   
+    <script type="text/javascript" src="common/webgl-utils.js">
+    </script>
+   <script type="text/javascript" src="common/initShaders.js"></script>
+   <script type="text/javascript" src="common/MV.js"></script>
+   <script type="text/javascript" src="project1.js"></script>
+   
+</html>
